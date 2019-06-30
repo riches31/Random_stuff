@@ -1,26 +1,21 @@
-Function Decrypt {
+Function Start-Decryption {
 param (
     [int32]$X,
     [int32]$Y
 )
 $string = ""
-$i=0
 $i=$x-1
-$string += $crypto[$i]
-$i += $Y
 $string += $crypto[$i]
 
 Do{
-        $i += $x
-        $string += $crypto[$i]
         $i += $Y
+        $string += $crypto[$i]
+        $i += $x
         $string += $crypto[$i]
     }Until ($i -gt $crypto.Length)
 
-$string
+        Write-host $string -ForegroundColor Red
 }
-
-
 
 $crypto = @"
 P k T r 2 s z 2 * c F -
@@ -46,6 +41,6 @@ for ($i=1;$i -le 15;$i++) {
             $X=$i
             $Y=$j
             Write-Host "Using $X & $Y" -ForegroundColor Green
-            Decrypt -X $X -Y $Y
+            Start-Decryption -X $X -Y $Y
         }
     }
