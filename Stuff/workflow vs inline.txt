@@ -1,0 +1,5 @@
+1. Keep as is... Krångligt att koda, lite bökig felhantering (som går att jobba), inga funktioner i workflows.
+
+2. Enbart rena powershell script. Går inte att göra suspend, foreachparallell. JobID verkar gå bra att få ut, (fortfarande samma id för alla script i en och samma session). Går bra att hämta variabler och credentials precis som i workflows vad jag kan se. Slipper växla mellan inlinescript och workflow läge.
+
+3. Kör enbart workflows som i #1, kör inlinescript för att köra egenskrivna powershellmoduler. Kontrollscripten går helt i SMA och all riktig kod körs i powershell inlinescript. Vi skriver alla script som powershellmoduler, använder Azure DevOps Server för att göra en pipeline som paketerar hela vårt scriptrepo som en powershellmodul och deployar denna på alla runbook workers. En riktig CI/CD process. Nackdel, jag vill i så fall packa ihop alla våra funktioner i en PSM1 modul (i mina ögon även en fördel, då jag vill lära mig det). Fördel våra moduler kan nyttja t.ex. PS7.
